@@ -20,6 +20,7 @@ public class Runner {
                 String value = sc.nextLine();
                 Purchase purchase = PurchaseFactory.getClassFromFactory(key);
                 firstPurchaseMap.put(purchase, value);
+
                 }
         } catch (FileNotFoundException e) {
             System.out.println("file not found");

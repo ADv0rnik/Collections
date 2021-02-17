@@ -25,6 +25,6 @@ public class PricePurchase extends Purchase{
 
     @Override
     public String toString() {
-        return String.format("%s;%.2f;%d;%.2f;%.2f", super.getName(), Round(super.getPrice()), super.getQuantity(), Round(this.discInRoubles), getCost());
+        return String.format("%s; %.2f; %d; %.2f; %.2f", super.getName(), Round(super.getPrice()), super.getQuantity(), Round(this.discInRoubles), getCost());
     }
 }

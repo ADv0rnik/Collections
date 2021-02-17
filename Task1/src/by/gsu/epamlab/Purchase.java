@@ -44,7 +44,7 @@ public class Purchase {
 
     @Override
     public String toString() {
-            return String.format("%s;%.2f;%d;%.2f;", this.name, this.Round(price), this.quantity, getCost());
+            return String.format("%s; %.2f; %d; %.2f", this.name, this.Round(price), this.quantity, getCost());
     }
 
     public double Round(int value){

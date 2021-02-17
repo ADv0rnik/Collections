@@ -19,16 +19,12 @@ public class PricePurchase extends Purchase{
     }
 
     @Override
-    public double getCost()  {
-        if (discInRoubles > 0) {
-            return (Round(getPrice() - discInRoubles) * getQuantity());
-        } else {
-            return super.getCost();
-        }
+    public double getCost()  {        
+            return (Round(getPrice() - discInRoubles) * getQuantity());       
     }
 
     @Override
     public String toString() {
-        return super.toString() + String.format("%.2f",Round(this.discInRoubles));
+        return String.format("%s;%.2f;%d;%.2f;%.2f", super.getName(), Round(super.getPrice()), super.getQuantity(), Round(this.discInRoubles), getCost());
     }
 }

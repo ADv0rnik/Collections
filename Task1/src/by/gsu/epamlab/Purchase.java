@@ -66,8 +66,8 @@ public class Purchase {
             return this.name.equals(product.name);
         }
 
-    /*@Override
-    public int compareTo(Purchase o) {
-        return 0;
-    }*/
+    @Override
+    public int hashCode() {
+        return name.length() * quantity;
+    }
 }

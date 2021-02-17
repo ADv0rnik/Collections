@@ -12,16 +12,27 @@ public class Runner {
         Scanner sc;
         HashMap<Purchase, String>firstPurchaseMap = new HashMap<Purchase, String>();
         HashMap<Purchase, String>lastPurchaseMap = new HashMap<Purchase, String>();
-
         try{
             sc = new Scanner(new FileReader(PACKAGE + args[0] + EXT));
             while (sc.hasNextLine()){
                 String key = sc.nextLine();
                 String value = sc.nextLine();
                 Purchase purchase = PurchaseFactory.getClassFromFactory(key);
-                firstPurchaseMap.put(purchase, value);
-
+                if(firstPurchaseMap.containsKey(purchase)){
+                    int day1 = WeekDay.valueOf(value).ordinal();
+                    int day2 = WeekDay.valueOf(firstPurchaseMap.get(purchase)).ordinal();
+                    if (day1 < day2) {
+                        String tmp = firstPurchaseMap.get(purchase);
+                        removeItem(firstPurchaseMap, purchase);
+                        firstPurchaseMap.put(purchase, value);
+                        lastPurchaseMap.put(purchase, tmp);
+                    }else{
+                        lastPurchaseMap.put(purchase,value);
+                    }
+                }else {
+                    firstPurchaseMap.put(purchase, value);
                 }
+            }
         } catch (FileNotFoundException e) {
             System.out.println("file not found");
         }

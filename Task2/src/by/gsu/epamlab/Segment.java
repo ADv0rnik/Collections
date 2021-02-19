@@ -37,4 +37,9 @@ public class Segment implements Comparable<Segment>{
     public int compareTo(Segment segment){
         return Integer.compare(len, segment.len);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%d;%d",len,num);
+    }
 }

@@ -1,6 +1,6 @@
 package by.gsu.epamlab;
 
-public class Segment {
+public class Segment implements Comparable<Segment>{
     private int len;
     private int num;
 
@@ -35,14 +35,6 @@ public class Segment {
     }
 
     public int compareTo(Segment segment){
-        if(len == segment.len){
-            return 0;
-        }
-        else if(len > segment.len){
-            return 1;
-        }
-        else{
-            return -1;
-        }
+        return Integer.compare(len, segment.len);
     }
 }

@@ -21,6 +21,9 @@ public class Runner {
                 //System.out.println(line);
                 num = line.split("\\s*\\(\\s*|\\D?\\s*;\\s*|\\s*\\)\\s*");
                 x1 = Double.parseDouble(num[1]);
+                y1 = Double.parseDouble(num[2]);
+                x2 = Double.parseDouble(num[3]);
+                y2 = Double.parseDouble(num[4]);
                 System.out.println(x1);
 
 

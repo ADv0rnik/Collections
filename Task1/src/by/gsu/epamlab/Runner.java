@@ -10,8 +10,8 @@ public class Runner {
         final String PACKAGE = "Task1/src/";
         final String EXT = ".csv";
         Scanner sc;
-        HashMap<Purchase, String>firstPurchaseMap = new HashMap<Purchase, String>();
-        HashMap<Purchase, String>lastPurchaseMap = new HashMap<Purchase, String>();
+        HashMap<Purchase, String>firstPurchaseMap = new HashMap<>();
+        HashMap<Purchase, String>lastPurchaseMap = new HashMap<>();
         try{
             sc = new Scanner(new FileReader(PACKAGE + args[0] + EXT));
             while (sc.hasNextLine()){

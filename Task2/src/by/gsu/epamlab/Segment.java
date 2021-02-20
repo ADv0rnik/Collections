@@ -2,7 +2,7 @@ package by.gsu.epamlab;
 
 public class Segment implements Comparable<Segment>{
     private int len;
-    private int num;
+    private int num = 1;
 
     public int getLen() {
         return len;
@@ -30,10 +30,6 @@ public class Segment implements Comparable<Segment>{
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
     public int compareTo(Segment segment){
         return Integer.compare(len, segment.len);
     }

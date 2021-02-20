@@ -17,11 +17,11 @@ The algorithm of the method main( ):
 5. find the first and the last weekdays for bread with price 1.55; 
 6. find the first weekday for bread with price 1.70​; 
 7. remove all entries from the first map where the purchase name is meat; 
-8. remove all entries from the second map on FRIDAY​; 
-9. print maps by for–each cycle; 
-10.load instances of the subclass ​PricePurchase from the file in.csv into the list (List<PricePurchase>); 
-11.print the total cost of these purchases; 
-12.load the content of the file in.csv into the enumerated map where a weekday is a key and purchases list for this weekday is a value; 
-13.print the map by for–each cycle; 
-14.print the total cost of all purchases for each weekday; 
-15.find all purchases on MONDAY
+8. remove all entries from the second map on FRIDAY; 
+9. print maps by for–each cycle;
+10. load instances of the subclass PricePurchase from the file in.csv into the list (List<PricePurchase>);
+11. print the total cost of these purchases;
+12. load the content of the file in.csv into the enumerated map where a weekday is a key and purchases list for this weekday is a value; 
+13. print the map by for–each cycle;
+14. print the total cost of all purchases for each weekday; 
+15. find all purchases on MONDAY

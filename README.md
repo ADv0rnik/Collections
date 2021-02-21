@@ -25,3 +25,10 @@ The algorithm of the method main( ):
 13. print the map by for–each cycle;
 14. print the total cost of all purchases for each weekday; 
 15. find all purchases on MONDAY
+
+Task 2 
+
+Let the file in.txt contains correct coordinates of segments (one per line) in the format: 
+(x1;y1) (x2;y2) 
+1) Create the list of kind (len; num) where len is the segment length rounded to integer and num is the number of segments of the length len.  
+2) Sort the list by the field num in descending order. 

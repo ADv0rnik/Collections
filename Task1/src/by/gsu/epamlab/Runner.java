@@ -58,6 +58,7 @@ public class Runner {
         printMap(lastPurchaseMap);
         System.out.println();
         printMap(enumMap);
+        System.out.println(getTotalCost(list));
     }
 
     private static void printMap(HashMap<Purchase, String> map) {
@@ -70,5 +71,13 @@ public class Runner {
 
     private static void removeItem (HashMap<Purchase, String> map, Purchase k){
         map.remove(k);
+    }
+
+    private static double getTotalCost(List<PricePurchase> list){
+        double total = 0;
+        for (int i = 0; i < list.size(); i++){
+            total += list.get(i).getCost();
+        }
+        return total;
     }
 }

@@ -58,7 +58,7 @@ public class Runner {
         printMap(lastPurchaseMap);
         System.out.println();
         printMap(enumMap);
-        System.out.println(getTotalCost(list));
+        System.out.println("Total cost is: "+ getTotalCost(list));
     }
 
     private static void printMap(HashMap<Purchase, String> map) {

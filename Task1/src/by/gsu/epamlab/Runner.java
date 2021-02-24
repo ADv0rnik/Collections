@@ -60,8 +60,8 @@ public class Runner {
         printMap(enumMap);
         System.out.println("Total cost is: "+ getTotalCost(list));
         System.out.println();
-        System.out.println(findItem(firstPurchaseMap,new Purchase("bread",155,2)));
-        System.out.println(findItem(lastPurchaseMap,new Purchase("bread",154,2)));
+        System.out.println(findWeekDay(firstPurchaseMap,new Purchase("bread",155,2)));
+        System.out.println(findWeekDay(lastPurchaseMap,new Purchase("bread",154,2)));
     }
 
     private static void printMap(HashMap<Purchase, String> map) {
@@ -84,7 +84,7 @@ public class Runner {
         return total;
     }
 
-    private static WeekDay findItem (HashMap<Purchase, String> map, Purchase k){
+    private static WeekDay findWeekDay(HashMap<Purchase, String> map, Purchase k){
         WeekDay result = null;
         var keys = map.keySet();
         for(Purchase p: keys){
@@ -94,5 +94,12 @@ public class Runner {
             }
         }
         return result;
+    }
+
+    private static Purchase findItem(HashMap<Purchase, String> map, Purchase k){
+        Purchase result = null;
+        var value = map.values();
+
+
     }
 }

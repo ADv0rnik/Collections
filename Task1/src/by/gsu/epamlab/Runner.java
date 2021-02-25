@@ -53,15 +53,21 @@ public class Runner {
         } catch (FileNotFoundException e) {
             System.out.println("file not found");
         }
+        System.out.println("First purchase map:");
         printMap(firstPurchaseMap);
         System.out.println();
+        System.out.println("Last purchase map:");
         printMap(lastPurchaseMap);
+        System.out.println();
+        System.out.println(findWeekDay(firstPurchaseMap,new Purchase("bread",155,2)));
+        System.out.println(findWeekDay(lastPurchaseMap,new Purchase("bread",154,2)));
+        System.out.println();
+        removeItem(firstPurchaseMap,new Purchase("meat", 900,2));
+        printMap(firstPurchaseMap);
         System.out.println();
         printMap(enumMap);
         System.out.println("Total cost is: "+ getTotalCost(list));
         System.out.println();
-        System.out.println(findWeekDay(firstPurchaseMap,new Purchase("bread",155,2)));
-        System.out.println(findWeekDay(lastPurchaseMap,new Purchase("bread",154,2)));
         System.out.println(findItem(firstPurchaseMap, "MONDAY"));
     }
 //define private methods for data manipulation

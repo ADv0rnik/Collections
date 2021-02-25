@@ -38,7 +38,7 @@ public class Runner {
                     int day2 = WeekDay.valueOf(firstPurchaseMap.get(purchase)).ordinal();
                     if (day1 < day2) {
                         String tmp = firstPurchaseMap.get(purchase);
-                        removeItem(firstPurchaseMap, purchase);
+                        firstPurchaseMap.remove(purchase);
                         firstPurchaseMap.put(purchase, value);
                         lastPurchaseMap.put(purchase, tmp);
                     }
@@ -64,7 +64,7 @@ public class Runner {
         System.out.println(findWeekDay(lastPurchaseMap,new Purchase("bread",154,2)));
         System.out.println(findItem(firstPurchaseMap, "MONDAY"));
     }
-
+//define private methods for data manipulation
     private static void printMap(HashMap<Purchase, String> map) {
         map.forEach((Purchase, String) -> System.out.format("%s = %s%n", Purchase, String));
     }
@@ -73,8 +73,8 @@ public class Runner {
         map.forEach((WeekDay, list) -> System.out.format("%s = %s%n", WeekDay, list));
     }
 
-    private static void removeItem (HashMap<Purchase, String> map, Purchase k){
-        map.remove(k);
+    private static void removeItem (HashMap<Purchase, String> map, Purchase purchase){
+        map.keySet().removeIf(purchase1 -> purchase1.getName().equals(purchase.getName()));
     }
 
     private static double getTotalCost(List<PricePurchase> list){
@@ -85,11 +85,11 @@ public class Runner {
         return total;
     }
 
-    private static WeekDay findWeekDay(HashMap<Purchase, String> map, Purchase k){
+    private static WeekDay findWeekDay(HashMap<Purchase, String> map, Purchase purchase){
         WeekDay result = null;
         var keys = map.keySet();
         for(Purchase p: keys){
-            if(p.getName().equals(k.getName()) && p.getPrice() == k.getPrice()){
+            if(p.getName().equals(purchase.getName()) && p.getPrice() == purchase.getPrice()){
                 result = WeekDay.valueOf(map.get(p));
                 break;
             }

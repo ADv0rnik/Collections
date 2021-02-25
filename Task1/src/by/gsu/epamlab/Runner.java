@@ -62,6 +62,7 @@ public class Runner {
         System.out.println();
         System.out.println(findWeekDay(firstPurchaseMap,new Purchase("bread",155,2)));
         System.out.println(findWeekDay(lastPurchaseMap,new Purchase("bread",154,2)));
+        System.out.println(findItem(firstPurchaseMap, "MONDAY"));
     }
 
     private static void printMap(HashMap<Purchase, String> map) {
@@ -96,10 +97,14 @@ public class Runner {
         return result;
     }
 
-    private static Purchase findItem(HashMap<Purchase, String> map, Purchase k){
-        Purchase result = null;
-        var value = map.values();
-
-
+    private static List<Purchase> findItem(HashMap<Purchase, String> map, String day){
+        List<Purchase> result = new ArrayList<>();
+        var entry = map.entrySet();
+        for (Map.Entry<Purchase, String> p: entry){
+            if(day.equals(p.getValue())){
+                result.add(p.getKey());
+            }
+        }
+        return result;
     }
 }

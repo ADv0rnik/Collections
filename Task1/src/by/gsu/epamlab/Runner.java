@@ -105,14 +105,14 @@ public class Runner {
     }
 
     private static void getTotalCostFromMap(EnumMap<WeekDay, List<PricePurchase>> map){
-        double total = 0;
+        double total = 0;//sdfsdf
         var keys = map.keySet();
         var entry = map.entrySet();
         for (Map.Entry<WeekDay, List<PricePurchase>> p: entry){
             for(int i = 0; i < p.getValue().size(); i++){
                 total += p.getValue().get(i).getCost();
             }
-            System.out.printf("%s = %.2f%n", map.get(keys), total);//TODO: ste days for printing
+            System.out.printf("%s = %.2f%n", map.keySet(), total);//TODO: ste days for printing
         }
     }
 

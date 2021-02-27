@@ -2,6 +2,7 @@ package by.gsu.epamlab;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.security.KeyStore;
 import java.util.*;
 
 public class Runner {
@@ -62,11 +63,17 @@ public class Runner {
         System.out.println(findWeekDay(firstPurchaseMap,new Purchase("bread",155,2)));
         System.out.println(findWeekDay(lastPurchaseMap,new Purchase("bread",154,2)));
         System.out.println();
-        removeItem(firstPurchaseMap,new Purchase("meat", 900,2));
+        removeItemByKey(firstPurchaseMap,new Purchase("meat", 900,2));
+        removeItemByValue(lastPurchaseMap,"FRIDAY");
+        System.out.println("Updated first purchase map:");
         printMap(firstPurchaseMap);
         System.out.println();
-        printMap(enumMap);
+        System.out.println("Updated last purchase map:");
+        printMap(lastPurchaseMap);
+        System.out.println();
         System.out.println("Total cost is: "+ getTotalCost(list));
+        System.out.println();
+        printMap(enumMap);
         System.out.println();
         System.out.println(findItem(firstPurchaseMap, "MONDAY"));
     }
@@ -79,8 +86,12 @@ public class Runner {
         map.forEach((WeekDay, list) -> System.out.format("%s = %s%n", WeekDay, list));
     }
 
-    private static void removeItem (HashMap<Purchase, String> map, Purchase purchase){
+    private static void removeItemByKey(HashMap<Purchase, String> map, Purchase purchase){
         map.keySet().removeIf(purchase1 -> purchase1.getName().equals(purchase.getName()));
+    }
+
+    private static void removeItemByValue(HashMap<Purchase, String> map, String day){
+        map.entrySet().removeIf(entry -> day.equals(entry.getValue()));
     }
 
     private static double getTotalCost(List<PricePurchase> list){

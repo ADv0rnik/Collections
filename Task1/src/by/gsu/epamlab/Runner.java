@@ -2,7 +2,6 @@ package by.gsu.epamlab;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.security.KeyStore;
 import java.util.*;
 
 public class Runner {
@@ -25,13 +24,8 @@ public class Runner {
                 if(purchase.getClass().equals(PricePurchase.class)){
                     list.add((PricePurchase) purchase);
                     WeekDay day = WeekDay.valueOf(value);
-                    if (enumMap.get(day) == null){
-                        enumMap.put(day, new ArrayList<>());
-                        enumMap.get(day).add((PricePurchase) purchase);
-                    }
-                    else {
-                        enumMap.get(day).add((PricePurchase) purchase);
-                    }
+                    enumMap.computeIfAbsent(day, k -> new ArrayList<>());
+                    enumMap.get(day).add((PricePurchase) purchase);
                 }
 
                 if(firstPurchaseMap.containsKey(purchase)) {
@@ -73,10 +67,14 @@ public class Runner {
         System.out.println();
         System.out.println("Total cost is: "+ getTotalCost(list));
         System.out.println();
+        System.out.println("Enumerated map:");
         printMap(enumMap);
         System.out.println();
-        System.out.println(findItem(firstPurchaseMap, "MONDAY"));
+        System.out.println("Total cost for each weekday:");
         getTotalCostFromMap(enumMap);
+
+        System.out.println(findItem(firstPurchaseMap, "MONDAY"));
+        System.out.println(findItem(lastPurchaseMap, "MONDAY"));
 
     }
 //define private methods for data manipulation
@@ -105,14 +103,13 @@ public class Runner {
     }
 
     private static void getTotalCostFromMap(EnumMap<WeekDay, List<PricePurchase>> map){
-        double total = 0;//sdfsdf
-        var keys = map.keySet();
+        double total = 0;
         var entry = map.entrySet();
         for (Map.Entry<WeekDay, List<PricePurchase>> p: entry){
             for(int i = 0; i < p.getValue().size(); i++){
                 total += p.getValue().get(i).getCost();
             }
-            System.out.printf("%s = %.2f%n", map.keySet(), total);//TODO: ste days for printing
+            System.out.printf("%s = %.2f%n", p.getKey(), total);
         }
     }
 

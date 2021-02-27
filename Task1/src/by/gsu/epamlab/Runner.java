@@ -76,6 +76,8 @@ public class Runner {
         printMap(enumMap);
         System.out.println();
         System.out.println(findItem(firstPurchaseMap, "MONDAY"));
+        getTotalCostFromMap(enumMap);
+
     }
 //define private methods for data manipulation
     private static void printMap(HashMap<Purchase, String> map) {
@@ -96,10 +98,22 @@ public class Runner {
 
     private static double getTotalCost(List<PricePurchase> list){
         double total = 0;
-        for (int i = 0; i < list.size(); i++){
-            total += list.get(i).getCost();
+        for (PricePurchase pricePurchase : list) {
+            total += pricePurchase.getCost();
         }
         return total;
+    }
+
+    private static void getTotalCostFromMap(EnumMap<WeekDay, List<PricePurchase>> map){
+        double total = 0;
+        var keys = map.keySet();
+        var entry = map.entrySet();
+        for (Map.Entry<WeekDay, List<PricePurchase>> p: entry){
+            for(int i = 0; i < p.getValue().size(); i++){
+                total += p.getValue().get(i).getCost();
+            }
+            System.out.printf("%s = %.2f%n", map.get(keys), total);//TODO: ste days for printing
+        }
     }
 
     private static WeekDay findWeekDay(HashMap<Purchase, String> map, Purchase purchase){
